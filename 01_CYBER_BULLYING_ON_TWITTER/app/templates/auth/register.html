@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {%block title%} Register {%endblock%} {%block
+content%}
+
+<div class="page page--center">
+  <form method="post" action="#">
+    <h1>REGISTER</h1>
+    <img src="{{url_for('static', filename='images/icon.png')}}" alt="logo" />
+    <div class="mb-3">
+      <input
+        type="email"
+        class="form-control"
+        id="exampleFormControlInput1"
+        placeholder="name@example.com"
+        name="email"
+      />
+    </div>
+    <div class="mb-3">
+      <input
+        type="password"
+        class="form-control"
+        id="exampleFormControlInput1"
+        placeholder="password"
+        name="password"
+      />
+    </div>
+    {% if ctx.error %}
+    <div class="alert alert-danger d-flex align-items-center" role="alert">
+      {{ctx.error}}
+    </div>
+    {%endif%}
+    <button class="btn btn-secondary">REGISTER</button>
+    <h3>Already have an account? <span></span></h3>
+    <a class="btn btn-light" href="/auth/login">LOGIN</a>
+  </form>
+</div>
+{%endblock%}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {%block title%} Home {%endblock%} {%block content%}
+
+<div class="home">
+  <nav>
+    <a class="navbar-brand" href="#">
+      <img src="{{url_for('static', filename='images/icon.png')}}" alt="logo" />
+    </a>
+    <form class="d-flex" role="search">
+      <button class="btn btn-sm btn-outline-secondary" type="submit">
+        LOGOUT
+      </button>
+    </form>
+  </nav>
+  <div class="home__main">
+    <form class="home__form">
+      <textarea name="tweet"> </textarea>
+      <button class="btn btn-secondary">CLASSIFY TWEET</button>
+    </form>
+  </div>
+</div>
+
+{%endblock%}

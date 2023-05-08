@@ -1,0 +1,118 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif !important;
+  user-select: none;
+}
+body {
+  --main: #7fb77e;
+  --primary: #b1d7b4;
+  --secondary: #f7f6dc;
+  --tertiary: #f7f6dc;
+  --white: white;
+  --red: #ff3953;
+
+  background-color: var(--primary);
+}
+
+.page,
+.home {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.page--center {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.page--center > form {
+  width: 100%;
+  background-color: var(--tertiary);
+  border-radius: 5px;
+  max-width: 500px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.page--center > form > img {
+  width: 100px;
+  align-self: center;
+  margin-bottom: 10px;
+}
+.page--center > form > h1 {
+  font-size: 1.4rem;
+  text-align: center;
+}
+.page--center > form > h3 {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+.page--center > form > h3 > span {
+  border-bottom: 1px solid var(--white);
+  flex: 1;
+  margin-left: 10px;
+}
+.home {
+  padding: 0;
+}
+.home > nav {
+  display: flex;
+  justify-content: space-between;
+  align-self: flex-start;
+  width: 100%;
+  padding: 10px 30px;
+  background-color: var(--main);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.home > nav > a > img {
+  width: 40px;
+}
+.home__main {
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  height: 100%;
+}
+.home__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  background-color: var(--tertiary);
+  padding: 20px;
+  margin: 10px auto;
+  border-radius: 10px;
+}
+.home__form > textarea {
+  margin-bottom: 10px;
+  outline: none;
+  border: none;
+  padding: 10px;
+  height: 100px;
+  resize: none;
+}
+.home__form > textarea > button {
+  align-self: flex-start;
+  width: 100px !important;
+}
+/* media queries */
+
+@media only screen and (max-width: 600px) {
+  .page--center > form {
+    background-color: transparent !important;
+  }
+}
