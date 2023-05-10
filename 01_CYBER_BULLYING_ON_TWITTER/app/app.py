@@ -60,6 +60,10 @@ class AppConfig:
     DEBUG = True
 
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return make_response(render_template('common/404.html')), 404
+
 @app.route("/auth/login", methods=["GET", "POST"])
 def login():
     res = make_response(render_template("auth/login.html", ctx={"error": ""}))
