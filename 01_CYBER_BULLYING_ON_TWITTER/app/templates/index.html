@@ -5,18 +5,25 @@
     <a class="navbar-brand" href="#">
       <img src="{{url_for('static', filename='images/icon.png')}}" alt="logo" />
     </a>
-    <form class="d-flex" role="search">
+    <form class="d-flex" role="search" id="logout__form">
       <button class="btn btn-sm btn-outline-secondary" type="submit">
         LOGOUT
       </button>
     </form>
   </nav>
   <div class="home__main">
-    <form class="home__form">
-      <textarea name="tweet"> </textarea>
+    <form class="home__form" id="form" method="post">
+      <textarea
+        name="tweet"
+        id="tweet"
+        placeholder="Enter Cyber Bullying Tweet"
+      ></textarea>
       <button class="btn btn-secondary">CLASSIFY TWEET</button>
     </form>
+    <div class="home__results" id="home__results"></div>
   </div>
 </div>
 
+{%endblock%} {%block scripts%}
+<script src="{{url_for('static', filename='js/home.js')}}" defer></script>
 {%endblock%}

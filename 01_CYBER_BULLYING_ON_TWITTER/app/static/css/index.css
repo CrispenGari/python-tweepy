@@ -97,6 +97,13 @@ body {
   margin: 10px auto;
   border-radius: 10px;
 }
+.home__results {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  margin: 10px auto;
+}
 .home__form > textarea {
   margin-bottom: 10px;
   outline: none;
