@@ -62,7 +62,8 @@ class AppConfig:
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return make_response(render_template('common/404.html')), 404
+    return make_response(render_template("common/404.html")), 404
+
 
 @app.route("/auth/login", methods=["GET", "POST"])
 def login():
@@ -217,9 +218,9 @@ def logout():
     return "logout", 302
 
 
-@app.route("/", methods=["GET", "POST"], strict_slashes=False)
-def home_page():
-    response = make_response(render_template("index.html"))
+@app.route("/about", methods=["GET", "POST"], strict_slashes=False)
+def about():
+    response = make_response(render_template("about.html"))
     if request.method == "GET":
         try:
             token = request.cookies.get(COOKIE_NAME)
@@ -248,6 +249,60 @@ def home_page():
                     return res, 302
                 else:
                     token = jwt.encode({"email": me.email, "id": me.id}, TOKEN_SECRETE)
+                    response.set_cookie(
+                        COOKIE_NAME,
+                        token,
+                        timedelta(days=7),
+                        path="/",
+                        secure=True,
+                        httponly=False,
+                        samesite="lax",
+                    )
+        except:
+            res = redirect(url_for("login"))
+            res.delete_cookie(
+                COOKIE_NAME,
+                path="/",
+                secure=True,
+                httponly=False,
+                samesite="lax",
+            )
+            return res, 302
+    return response, 200
+
+
+@app.route("/", methods=["GET", "POST"], strict_slashes=False)
+def home_page():
+    response = make_response(render_template("index.html", ctx={"me": None}))
+    if request.method == "GET":
+        try:
+            token = request.cookies.get(COOKIE_NAME)
+            user = jwt.decode(str(token), TOKEN_SECRETE, algorithms=["HS256"])
+            if user is None:
+                res = redirect(url_for("login"))
+                res.delete_cookie(
+                    COOKIE_NAME,
+                    path="/",
+                    secure=True,
+                    httponly=False,
+                    samesite="lax",
+                )
+                return res, 302
+            else:
+                me = User.query.filter_by(id=user.get("id")).first()
+                if me is None:
+                    res = redirect(url_for("login"))
+                    res.delete_cookie(
+                        COOKIE_NAME,
+                        path="/",
+                        secure=True,
+                        httponly=False,
+                        samesite="lax",
+                    )
+                    return res, 302
+                else:
+                    token = jwt.encode({"email": me.email, "id": me.id}, TOKEN_SECRETE)
+                    response = make_response(render_template("index.html", ctx={"me": me}))
                     response.set_cookie(
                         COOKIE_NAME,
                         token,

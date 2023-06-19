@@ -1,0 +1,111 @@
+{% extends 'base.html' %} {%block title%} About {%endblock%} {%block content%}
+
+<div class="about">
+  <nav>
+    <a class="navbar-brand" href="/">
+      <h4>SENTIMENT ANALYSIS</h4>
+    </a>
+    <form
+      class="d-flex"
+      role="search"
+      action="/auth/logout"
+      id="logout__form"
+      method="post"
+    >
+      <a href="/about">ABOUT</a>
+      <button class="btn btn-sm btn-outline-secondary" type="submit">
+        LOGOUT
+      </button>
+    </form>
+  </nav>
+  <div class="container">
+    <h1>What is Cyberbullying?</h1>
+    <p>
+      Cyberbullying is bullying that takes place over digital devices and it
+      most commonly occurs over social media, text, instant messages and email.
+      It can also happen through online gaming and forums. Cyberbullying can be
+      particularly cruel and scary because it is done from behind a computer
+      screen and often anonymously. Examples include:
+    </p>
+    <ul>
+      <li>
+        spreading lies about or posting embarrassing photos or videos of someone
+        on social media
+      </li>
+      <li>
+        sending hurtful, abusive or threatening messages, images or videos via
+        messaging platforms
+      </li>
+      <li>
+        impersonating someone and sending mean messages to others on their
+        behalf or through fake accounts.
+      </li>
+    </ul>
+    <p>
+      Face-to-face bullying and cyberbullying can often happen alongside each
+      other. But cyberbullying leaves a digital footprint – a record that can
+      prove useful and provide evidence to help stop the abuse.
+    </p>
+    <h1>What are the effects of cyberbullying?</h1>
+
+    <p>
+      When bullying happens online it can feel as if you’re being attacked
+      everywhere, even inside your own home. It can seem like there’s no escape.
+      The effects can last a long time and affect a person in many ways:
+    </p>
+    <ul>
+      <li>
+        <b>Mentally</b> – feeling upset, embarrassed, stupid, even afraid or
+        angry
+      </li>
+      <li>
+        <b>Emotionally</b>– feeling ashamed or losing interest in the things you
+        love
+      </li>
+      <li>
+        <b>Physically</b>– tired (loss of sleep), or experiencing symptoms like
+        stomach aches and headaches
+      </li>
+    </ul>
+
+    <p>
+      The feeling of being laughed at or harassed by others, can prevent people
+      from speaking up or trying to deal with the problem. In extreme cases,
+      cyberbullying can even lead to people taking their own lives.
+    </p>
+    <p>
+      Cyberbullying can affect us in many ways. But these can be overcome and
+      people can regain their confidence and health.
+    </p>
+    <h1>What to do if you are being cyberbullied</h1>
+    <ul>
+      <li>
+        Never respond to harassing, negative and threatening responses about
+        you.
+      </li>
+      <li>consider reporting the behavior to Twitter.</li>
+      <li>
+        If you see or receive a reply you don’t like, unfollow and end any
+        communication with that account.
+      </li>
+      <li>
+        If the behavior continues, it is recommended that you block the account.
+      </li>
+    </ul>
+    <h1>How do the system works?</h1>
+    <p>
+      The application is a sentiment analysis model used to automatically
+      analyze tweets and classify them as either cyberbullying or not. It
+      manually labels the tweets as follows:
+    </p>
+
+    <ul>
+      <li>Positive which is text without cyberbullying.</li>
+      <li>Negative which is text that contains cyberbullying.</li>
+      <li>
+        Neutral is text which do not indicate that they approve or disapprove.
+      </li>
+    </ul>
+  </div>
+</div>
+{%endblock%}

@@ -66,7 +66,8 @@ body {
 .home {
   padding: 0;
 }
-.home > nav {
+.home > nav,
+.about > nav {
   display: flex;
   justify-content: space-between;
   align-self: flex-start;
@@ -77,9 +78,7 @@ body {
   top: 0;
   z-index: 10;
 }
-.home > nav > a > img {
-  width: 40px;
-}
+
 .home__main {
   flex: 1;
   justify-content: center;
@@ -115,6 +114,21 @@ body {
 .home__form > textarea > button {
   align-self: flex-start;
   width: 100px !important;
+}
+#logout__form {
+  display: flex;
+  align-items: center;
+}
+#logout__form > a {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+.about {
+  padding-bottom: 100px;
+}
+.about::-webkit-scrollbar {
+  display: none !important;
 }
 /* media queries */
 

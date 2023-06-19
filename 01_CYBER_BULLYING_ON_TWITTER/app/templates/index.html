@@ -2,10 +2,17 @@
 
 <div class="home">
   <nav>
-    <a class="navbar-brand" href="#">
-      <img src="{{url_for('static', filename='images/icon.png')}}" alt="logo" />
+    <a class="navbar-brand" href="/">
+      <h4>SENTIMENT ANALYSIS</h4>
     </a>
-    <form class="d-flex" role="search" id="logout__form">
+    <form
+      action="/auth/logout"
+      method="post"
+      class="d-flex"
+      role="search"
+      id="logout__form"
+    >
+      <a href="/about">ABOUT</a>
       <button class="btn btn-sm btn-outline-secondary" type="submit">
         LOGOUT
       </button>
@@ -13,14 +20,24 @@
   </nav>
   <div class="home__main">
     <form class="home__form" id="form" method="post">
-      <textarea
-        name="tweet"
-        id="tweet"
-        placeholder="Enter Cyber Bullying Tweet"
-      ></textarea>
+      <textarea name="tweet" id="tweet" placeholder="Enter Tweet"></textarea>
       <button class="btn btn-secondary">CLASSIFY TWEET</button>
     </form>
     <div class="home__results" id="home__results"></div>
+  </div>
+  <div class="container">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Hello👋</h5>
+
+        <small>You are logged in as {{ctx.me.email}}</small>
+        <br />
+        <br />
+        <form class="d-flex" role="search" action="/auth/logout" method="post">
+          <button class="btn btn-sm btn-primary" type="submit">LOGOUT</button>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
 
