@@ -100,7 +100,7 @@ def login():
         email = request.form.get("email")
         password = request.form.get("password")
         me = User.query.filter_by(email=str(email).strip().lower()).first()
-
+        print(me)
         if me is None:
             error = "Invalid email address"
             return make_response(
@@ -109,7 +109,7 @@ def login():
         try:
             correct = ph.verify(me.password, str(password).strip())
             if not correct:
-                error = "Invalid email address"
+                error = "Invalid account password."
                 return make_response(
                     render_template("auth/login.html", ctx={"error": error})
                 )
@@ -126,7 +126,7 @@ def login():
             )
             return response, 302
         except Exception as e:
-            error = "Invalid email address"
+            error = "Invalid account password."
             return make_response(
                 render_template("auth/login.html", ctx={"error": error})
             )
@@ -302,7 +302,9 @@ def home_page():
                     return res, 302
                 else:
                     token = jwt.encode({"email": me.email, "id": me.id}, TOKEN_SECRETE)
-                    response = make_response(render_template("index.html", ctx={"me": me}))
+                    response = make_response(
+                        render_template("index.html", ctx={"me": me})
+                    )
                     response.set_cookie(
                         COOKIE_NAME,
                         token,
